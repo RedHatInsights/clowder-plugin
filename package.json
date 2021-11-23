@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@openshift-console/dynamic-plugin-sdk": "0.0.0-beta2",
-    "chalk": "4.1.2",
+    "chalk": "2.4.0",
     "react": "16.9.0",
     "react-helmet": "^6.1.0",
     "react-i18next": "^11.8.11",
@@ -58,8 +58,6 @@
     "displayName": "Console Demo Plugin",
     "description": "Plasma reactors online. Initiating hyper drive.",
     "exposedModules": {
-      "barUtils": "./utils/bar",
-      "telemetry": "./utils/telemetry",
       "clowdApp": "./components/ClowdApp.tsx",
       "clowdEnv": "./components/ClowdEnv.tsx"
     },
