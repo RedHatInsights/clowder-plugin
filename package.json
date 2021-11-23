@@ -16,6 +16,8 @@
   "devDependencies": {
     "@types/react": "16.8.13",
     "copy-webpack-plugin": "^6.4.1",
+    "read-pkg": "7.0.0",
+    "comment-json": "4.1.1",
     "http-server": "0.12.x",
     "i18next-parser": "^3.3.0",
     "ts-loader": "6.2.2",
