@@ -8,111 +8,46 @@
  */
 [
   {
-    "type": "console.flag",
+    "type": "console.page/route",
     "properties": {
-      "handler": { "$codeRef": "barUtils.testHandler" }
+      "exact": false,
+      "path": "/k8s/clowdApp",
+      "component": { "$codeRef": "clowdApp" }
     }
   },
   {
-    "type": "console.flag/model",
+    "type": "console.page/route",
     "properties": {
-      "flag": "EXAMPLE",
-      "model": {
-        "group": "kubevirt.io",
-        "version": "v1alpha3",
-        "kind": "ExampleModel"
-      }
-    }
-  },
-  {
-    "type": "console.telemetry/listener",
-    "properties": {
-      "listener": {
-        "$codeRef": "telemetry.eventListener"
-      }
+      "exact": false,
+      "path": "/k8s/clowdEnv",
+      "component": { "$codeRef": "clowdEnv" }
     }
   },
   {
     "type": "console.navigation/section",
     "properties": {
-      "id": "admin-demo-section",
-      "perspective": "admin",
-      "name": "Demo Plugin"
+      "id": "clowder",
+      "name": "Clowder",
+      "perspective": "admin"
     }
   },
   {
     "type": "console.navigation/href",
     "properties": {
-      "id": "test-consumer",
-      "perspective": "admin",
-      "section": "admin-demo-section",
-      "name": "Test Consumer",
-      "href": "/test-consumer"
-    },
-    "flags": {
-      "required": ["OPENSHIFT"]
-    }
-  },
-  {
-    "type": "console.navigation/section",
-    "properties": {
-      "id": "dev-demo-section",
-      "perspective": "dev",
-      "name": "Demo Plugin"
+      "id": "clowdapp",
+      "name": "Apps",
+      "href": "/k8s/clowdApp",
+      "section": "clowder"
     }
   },
   {
     "type": "console.navigation/href",
     "properties": {
-      "id": "test-consumer",
-      "perspective": "dev",
-      "section": "dev-demo-section",
-      "name": "Test Consumer",
-      "href": "/test-consumer"
-    },
-    "flags": {
-      "required": ["OPENSHIFT"]
-    }
-  },
-  {
-    "type": "console.page/route",
-    "properties": {
-      "path": "/test-consumer",
-      "component": { "$codeRef": "extensionConsumer.default" }
-    }
-  },
-  {
-    "type": "console.page/route",
-    "properties": {
-      "path": "/test-utility-consumer",
-      "component": { "$codeRef": "utilityConsumer.default" }
-    }
-  },
-  {
-    "type": "console.page/route",
-    "properties": {
-      "path": "/example/nav",
-      "component": { "$codeRef": "navPage" }
-    }
-  },
-  {
-    "type": "console.navigation/href",
-    "properties": {
-      "id": "test-list-page",
-      "perspective": "admin",
-      "section": "admin-demo-section",
-      "name": "List page",
-      "href": "/demo-list-page"
-    },
-    "flags": {
-      "required": ["OPENSHIFT"]
-    }
-  },
-  {
-    "type": "console.page/route",
-    "properties": {
-      "path": "/demo-list-page",
-      "component": { "$codeRef": "listPage" }
+      "id": "clowdenv",
+      "name": "Env",
+      "href": "/k8s/clowdEnv",
+      "section": "clowder"
     }
   }
 ]
+

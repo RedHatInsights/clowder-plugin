@@ -9,7 +9,6 @@
     "experimentalDecorators": true,
     "noUnusedLocals": true,
     "skipLibCheck": true,
-    "esModuleInterop": true
   },
   "include": ["src"]
 }
