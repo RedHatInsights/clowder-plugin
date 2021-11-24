@@ -89,7 +89,7 @@ const Foo: React.FC = () => {
         col = "red"
       }
 
-      var link = "/k8s/cluster/cloud.redhat.com~v1alpha1~ClowdApp/" + a.metadata.name
+      var link = "/k8s/ns/" + a.metadata.namespace + "/cloud.redhat.com~v1alpha1~ClowdApp/" + a.metadata.name
 
       newArray.push([
         {title: <Button variant="link" component="a" href={link} isInline>{a.metadata.name}</Button>, }, 
