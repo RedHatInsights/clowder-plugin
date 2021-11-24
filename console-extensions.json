@@ -11,7 +11,15 @@
     "type": "console.page/route",
     "properties": {
       "exact": false,
-      "path": "/k8s/clowdApp",
+      "path": "/k8s/ns/:ns/clowdApp",
+      "component": { "$codeRef": "clowdApp" }
+    }
+  },
+  {
+    "type": "console.page/route",
+    "properties": {
+      "exact": false,
+      "path": "/k8s/all-namespaces/clowdApp",
       "component": { "$codeRef": "clowdApp" }
     }
   },
@@ -36,7 +44,7 @@
     "properties": {
       "id": "clowdapp",
       "name": "Apps",
-      "href": "/k8s/clowdApp",
+      "href": "/k8s/all-namespaces/clowdApp",
       "section": "clowder"
     }
   },

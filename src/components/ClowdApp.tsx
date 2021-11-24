@@ -4,7 +4,7 @@ import { K8sResourceCommon} from '@openshift-console/dynamic-plugin-sdk';
 import { useK8sWatchResource} from '@openshift-console/dynamic-plugin-sdk';
 import { PageSection, Title, Text } from '@patternfly/react-core';
 import { Table, TableHeader, TableBody, sortable } from '@patternfly/react-table';
-import { Label } from '@patternfly/react-core'
+import { Label, Button } from '@patternfly/react-core'
 
 export type ClowdAppDeployment = {
   managedDeployments?: number;
@@ -44,10 +44,16 @@ const CombineError = ({ errors }) => {
 }
 
 const Foo: React.FC = () => {
+  var path = window.location.pathname.split("/")
+  var namespace = ""
+  if (path[2] == "ns") {
+    namespace = path[3]
+  }
   const [data, loaded] = useK8sWatchResource<ClowdAppKind[]>({
     kind: 'cloud.redhat.com~v1alpha1~ClowdApp',
     isList: true,
-  });
+    namespace: namespace
+  });  
 
   const tabData = () => {
     var newArray = []
@@ -83,8 +89,10 @@ const Foo: React.FC = () => {
         col = "red"
       }
 
+      var link = "/k8s/cluster/cloud.redhat.com~v1alpha1~ClowdApp/" + a.metadata.name
+
       newArray.push([
-        {title: a.metadata.name, }, 
+        {title: <Button variant="link" component="a" href={link} isInline>{a.metadata.name}</Button>, }, 
         a.metadata.namespace, 
         a.spec.envName, 
         {title: <Label color={col}>{appReady.toString()}</Label>},

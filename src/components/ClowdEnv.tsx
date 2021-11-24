@@ -2,7 +2,7 @@ import * as React from 'react';
 import { K8sResourceCommon, useK8sWatchResource } from '@openshift-console/dynamic-plugin-sdk';
 import { PageSection, Title, Text } from '@patternfly/react-core';
 import { Table, TableHeader, TableBody, sortable } from '@patternfly/react-table';
-import { Label } from '@patternfly/react-core'
+import { Label, Button } from '@patternfly/react-core'
 
 export type ClowdEnvDeployment = {
   managedDeployments?: number;
@@ -81,8 +81,10 @@ const Foo: React.FC = () => {
         col = "red"
       }
 
+      var link = "/k8s/cluster/cloud.redhat.com~v1alpha1~ClowdEnvironment/" + a.metadata.name
+
       newArray.push([
-        {title: a.metadata.name, }, 
+        {title: <Button variant="link" component="a" href={link} isInline>{a.metadata.name}</Button>, }, 
         {title: <Label color={col}>{appReady.toString()}</Label>},
         {title: <CombineError errors={errors}/>},
       ])

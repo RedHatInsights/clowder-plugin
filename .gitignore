@@ -1,2 +1,3 @@
 node_modules/*
-.cache_loader/*
+.cache-loader/*
+dist/*
