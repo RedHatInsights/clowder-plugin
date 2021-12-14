@@ -8,30 +8,6 @@
  */
 [
   {
-    "type": "console.page/route",
-    "properties": {
-      "exact": false,
-      "path": "/k8s/ns/:ns/clowdApp",
-      "component": { "$codeRef": "clowdApp" }
-    }
-  },
-  {
-    "type": "console.page/route",
-    "properties": {
-      "exact": false,
-      "path": "/k8s/all-namespaces/clowdApp",
-      "component": { "$codeRef": "clowdApp" }
-    }
-  },
-  {
-    "type": "console.page/route",
-    "properties": {
-      "exact": false,
-      "path": "/k8s/clowdEnv",
-      "component": { "$codeRef": "clowdEnv" }
-    }
-  },
-  {
     "type": "console.navigation/section",
     "properties": {
       "id": "clowder",
@@ -40,21 +16,51 @@
     }
   },
   {
-    "type": "console.navigation/href",
+    "type": "console.page/resource/list",
     "properties": {
-      "id": "clowdapp",
-      "name": "Apps",
-      "href": "/k8s/all-namespaces/clowdApp",
-      "section": "clowder"
+      "model": {
+        "group": "cloud.redhat.com", 
+        "version": "v1alpha1", 
+        "kind": "ClowdApp" 
+      },
+      "component": { "$codeRef": "clowdApp"}
     }
   },
   {
-    "type": "console.navigation/href",
+    "type": "console.navigation/resource-ns",
+    "properties": {
+      "id": "clowdapp",
+      "model": {
+        "group": "cloud.redhat.com", 
+        "version": "v1alpha1", 
+        "kind": "ClowdApp" 
+      },
+      "section": "clowder",
+      "name": "Clowd Apps"
+    }
+  },
+  {
+    "type": "console.page/resource/list",
+    "properties": {
+      "model": {
+        "group": "cloud.redhat.com", 
+        "version": "v1alpha1", 
+        "kind": "ClowdEnvironment" 
+      },
+      "component": { "$codeRef": "clowdEnv"}
+    }
+  },
+  {
+    "type": "console.navigation/resource-ns",
     "properties": {
       "id": "clowdenv",
-      "name": "Env",
-      "href": "/k8s/clowdEnv",
-      "section": "clowder"
+      "model": {
+        "group": "cloud.redhat.com", 
+        "version": "v1alpha1", 
+        "kind": "ClowdEnvironment" 
+      },
+      "section": "clowder",
+      "name": "Clowd Environments"
     }
   }
 ]
