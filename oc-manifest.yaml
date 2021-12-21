@@ -92,4 +92,4 @@ parameters:
 - name: IMAGE_TAG
   value: latest
 - name: IMAGE
-  value: quay.io/psav/clowder-plugin
+  value: quay.io/cloudservices/clowder-plugin
