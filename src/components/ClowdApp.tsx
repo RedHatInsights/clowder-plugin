@@ -105,7 +105,7 @@ const Foo: React.FC = () => {
   return (
     <PageSection style={{ paddingTop: 20, paddingLeft: 20, overflow: "auto" }}>
       <Title headingLevel="h1" size="3xl">ClowdApp Status</Title>
-      <Text style={{paddingTop: 20, paddingBottom: 20, color: "#555"}}>This page shows a list of all ClowdApps and their associated states.</Text>
+      <Text style={{paddingTop: 20, paddingBottom: 20, color: "#555"}}>This page shows a list of all ClowdApps and their associated state.</Text>
       <React.Fragment>
           <SortableTable 
             columns={[{title: "Name", transforms:[sortable]}, "Namespace", "Environment Name", "Ready", "Error"]}
