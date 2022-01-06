@@ -9,7 +9,7 @@ WORKDIR /build
 
 COPY src/ src/
 COPY locales/ locales/
-COPY tsconfig.json webpack.config.ts console-extensions.json i18next-parser.config.js package.json ./
+COPY tsconfig.json webpack.config.ts console-extensions.json package.json ./
 
 RUN yarn install
 
