@@ -12,8 +12,6 @@ COPY locales/ locales/
 COPY tsconfig.json webpack.config.ts console-extensions.json package.json ./
 
 RUN yarn install
-
-RUN ls -la
 RUN yarn build
 
 FROM registry.access.redhat.com/ubi8/nginx-118
