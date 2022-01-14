@@ -84,6 +84,17 @@ objects:
       namespace: clowder-system
       port: 9001
       basePath: '/'
+- apiVersion: networking.k8s.io/v1
+  kind: NetworkPolicy
+  metadata:
+    name: clowder-plugin-allow-from-console-namespace
+  spec:
+    podSelector: {}
+    ingress:
+      - from:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: openshift-console
 parameters:
 - name: IMAGE_TAG
   value: latest
