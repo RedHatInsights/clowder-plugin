@@ -22,7 +22,8 @@ FROM registry.access.redhat.com/ubi8/nginx-118
 
 ADD ./nginx.conf "${NGINX_CONFIGURATION_PATH}"
 COPY --from=builder /build/dist /opt/clowder-plugin 
-RUN mkdir -p /opt/clowder-plugin/locales/en/
+RUN mkdir /opt/clowder-plugin/locales
+RUN mkdir /opt/clowder-plugin/locales/en
 COPY --from=builder /build/locales/en /opt/clowder-plugin/locales/en
 
 # Run script uses standard ways to run the application
