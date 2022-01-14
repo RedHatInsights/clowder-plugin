@@ -35,10 +35,6 @@ objects:
               - containerPort: 9001
                 protocol: TCP
             imagePullPolicy: Always
-            args:
-              - '--ssl'
-              - '--cert=/var/serving-cert/tls.crt'
-              - '--key=/var/serving-cert/tls.key'
             volumeMounts:
               - name: console-serving-cert
                 readOnly: true
@@ -85,7 +81,7 @@ objects:
     displayName: 'OpenShift Console Demo Plugin'
     service:
       name: clowder-plugin
-      namespace: clowder-plugin
+      namespace: clowder-system
       port: 9001
       basePath: '/'
 parameters:
