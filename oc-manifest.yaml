@@ -18,6 +18,8 @@ objects:
       app.kubernetes.io/instance: clowder-plugin
       app.kubernetes.io/part-of: clowder-plugin
       app.openshift.io/runtime-namespace: clowder-plugin
+    annotations:
+      kube-linter.io/ignore-all: "no checks needed"
   spec:
     replicas: 1
     selector:
