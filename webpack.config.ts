@@ -3,7 +3,7 @@
 import * as webpack from 'webpack';
 import * as path from 'path';
 import * as MiniCssExtractPlugin from 'mini-css-extract-plugin';
-import { ConsoleRemotePlugin } from '@openshift-console/dynamic-plugin-sdk/lib/index-webpack';
+import { DynamicRemotePlugin } from '@openshift/dynamic-plugin-sdk-webpack';
 
 const extractCSS = new MiniCssExtractPlugin();
 const overpassTest = /overpass-.*\.(woff2?|ttf|eot|otf)(\?.*$|$)/;
@@ -78,7 +78,7 @@ const config: webpack.Configuration = {
   },
   plugins: [
     extractCSS,
-    new ConsoleRemotePlugin(),
+    new DynamicRemotePlugin(),
     new webpack.EnvironmentPlugin({
       REACT_APP_API_ROOT: '',
       REACT_APP_BUILD_MODE: '',
