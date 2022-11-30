@@ -1,14 +1,24 @@
 {
+  "$schema": "https://json.schemastore.org/tsconfig",
   "compilerOptions": {
-    "baseUrl": ".",
-    "module": "esnext",
+    "target": "es2020",
+    "module": "es2020",
     "moduleResolution": "node",
-    "target": "es2016",
-    "jsx": "react",
     "allowJs": true,
-    "experimentalDecorators": true,
-    "noUnusedLocals": true,
+    "jsx": "react",
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
     "skipLibCheck": true,
+    "strict": true,
+    "noUnusedLocals": true
   },
-  "include": ["src"]
+  "ts-node": {
+    "files": true,
+    "transpileOnly": true,
+    "compilerOptions": {
+      "module": "commonjs"
+    }
+  },
+  "include": ["**/*.ts"],
+  "exclude": ["node_modules"]
 }
