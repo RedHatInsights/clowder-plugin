@@ -1,4 +1,4 @@
-FROM registry.access.redhat.com/ubi8/ubi as builder
+FROM registry.access.redhat.com/ubi8/ubi:8.7-1037 as builder
 
 RUN yum -y module enable nodejs:14
 RUN dnf install npm patch -y
@@ -8,11 +8,11 @@ RUN mkdir /build
 WORKDIR /build
 
 COPY locales/ locales/
-COPY tsconfig.json webpack.config.ts console-extensions.json package.json sdk.patch ./
+COPY tsconfig.json webpack.config.mjs console-extensions.json package.json sdk.patch ./
 
 RUN yarn install
 
-RUN patch node_modules/\@openshift-console/dynamic-plugin-sdk/lib/webpack/ConsoleAssetPlugin.js sdk.patch
+#RUN patch node_modules/\@openshift-console/dynamic-plugin-sdk/lib/webpack/ConsoleAssetPlugin.js sdk.patch
 
 COPY src/ src/
 
