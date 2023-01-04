@@ -1,7 +1,7 @@
 import webpack from 'webpack';
 import path from 'path';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
-import { DynamicRemotePlugin } from '@openshift/dynamic-plugin-sdk-webpack';
+import { ConsoleRemotePlugin } from '@openshift-console/dynamic-plugin-sdk-webpack';
 import { fileURLToPath } from 'url';
 
 
@@ -75,7 +75,7 @@ const config = {
   },
   plugins: [
     extractCSS,
-    new DynamicRemotePlugin(),
+    new ConsoleRemotePlugin(),
     new webpack.EnvironmentPlugin({
       REACT_APP_API_ROOT: '',
       REACT_APP_BUILD_MODE: '',
