@@ -1,0 +1,13 @@
+{
+    "name": "clowder-plugin",
+    "version": "0.0.0",
+    "displayName": "Clowder Plugin",
+    "description": "Clowder Plugin",
+    "exposedModules": {
+        "clowdApp": "./components/ClowdApp.tsx",
+        "clowdEnv": "./components/ClowdEnv.tsx"
+    },
+    "dependencies": {
+        "@console/pluginAPI": "*"
+    }
+}

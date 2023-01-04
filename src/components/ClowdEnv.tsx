@@ -2,7 +2,7 @@ import * as React from 'react';
 import { K8sResourceCommon, useK8sWatchResource } from '@openshift-console/dynamic-plugin-sdk';
 import { PageSection, Title, Text } from '@patternfly/react-core';
 import { Table, TableHeader, TableBody, sortable } from '@patternfly/react-table';
-import { Label, Button } from '@patternfly/react-core'
+import { Label, Button, LabelProps } from '@patternfly/react-core'
 
 export type ClowdEnvDeployment = {
   managedDeployments?: number;
@@ -24,17 +24,13 @@ export type ClowdEnvStatus = {
   conditions?: ClowdEnvCondition[];
 };
 
-export type ClowdSpec = {
-  envName: string;
-}
-
 export type ClowdEnvKind = {
   spec: ClowdSpec;
   status?: ClowdEnvStatus;
 } & K8sResourceCommon;
 
-const CombineError = ({ errors }) => {
-  var error = [];
+const CombineError = ({ errors }: { errors: React.ReactNode[] }) => {
+  var error: JSX.Element[] = [];
   errors.forEach(element => {
     error.push(<React.Fragment>{element}<br/></React.Fragment>);
     });
@@ -48,16 +44,16 @@ const Foo: React.FC = () => {
   });
 
   const tabData = () => {
-    var newArray = []
+    var newArray: {title: React.ReactNode}[][] = []
     if (!loaded) {
       return []
     }
     data.forEach((a, b, c) => {
 
       var appReady = true
-      var col
+      var col: LabelProps['color']
 
-      var errors = []
+      var errors: (string | undefined)[] = []
       if (a.status && a.status.conditions){
         a.status.conditions.forEach((d, e, f) => {
           if (d.type == "ReconciliationPartiallySuccessful" && d.status == "True"){
@@ -81,10 +77,10 @@ const Foo: React.FC = () => {
         col = "red"
       }
 
-      var link = "/k8s/cluster/cloud.redhat.com~v1alpha1~ClowdEnvironment/" + a.metadata.name
+      var link = "/k8s/cluster/cloud.redhat.com~v1alpha1~ClowdEnvironment/" + a.metadata?.name
 
       newArray.push([
-        {title: <Button variant="link" component="a" href={link} isInline>{a.metadata.name}</Button>, }, 
+        {title: <Button variant="link" component="a" href={link} isInline>{a.metadata?.name}</Button>, }, 
         {title: <Label color={col}>{appReady.toString()}</Label>},
         {title: <CombineError errors={errors}/>},
       ])
@@ -111,9 +107,16 @@ export default Foo;
 import {
   SortByDirection,
 } from '@patternfly/react-table';
+import { ClowdSpec } from './ClowdApp';
 
-class SortableTable extends React.Component<{rows: any, columns: any}, {rows: any, columns: any, sortBy: any}> {
-  constructor(props) {
+type SortableTableProps = {rows: any[], columns: any[]}
+type SortableTableState = {rows: any[], columns: any[], sortBy: {
+  index: number,
+  direction: SortByDirection
+}}
+class SortableTable extends React.Component<SortableTableProps, SortableTableState> {
+  state: SortableTableState
+  constructor(props: SortableTableProps) {
     super(props);
     
     this.state = {
@@ -127,7 +130,7 @@ class SortableTable extends React.Component<{rows: any, columns: any}, {rows: an
     this.onSort = this.onSort.bind(this);
   }
 
-  componentDidUpdate(prevProps, prevState, snapshot) {
+  componentDidUpdate(prevProps: SortableTableProps) {
     if (JSON.stringify(this.props.rows) !== JSON.stringify(prevProps.rows)) {
       this.setState({
         rows: this.props.rows
@@ -135,7 +138,7 @@ class SortableTable extends React.Component<{rows: any, columns: any}, {rows: an
     }
   }
 
-  onSort(_event, index, direction) {
+  onSort(_event: any, index: number, direction: SortByDirection) {
     const sortedRows = this.state.rows.sort((a, b) => (a[index].title < b[index].title ? -1 : a[index].title > b[index].title ? 1 : 0));
     this.setState({
       sortBy: {

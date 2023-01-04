@@ -2,7 +2,13 @@
 
 set -exv
 
-make test
+IMAGE="quay.io/cloudservices/clowder-plugin"
+IMAGE_TAG=$(git rev-parse --short=7 HEAD)
+
+DOCKER_CONF="$PWD/.docker"
+mkdir -p "$DOCKER_CONF"
+docker --config="$DOCKER_CONF" build -t "${IMAGE}:${IMAGE_TAG}" .
+
 TEST_RESULT=$?
 
 exit 0
