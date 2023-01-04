@@ -1,20 +1,27 @@
-/* eslint-env node */
-
-import * as webpack from 'webpack';
-import * as path from 'path';
-import * as MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import webpack from 'webpack';
+import path from 'path';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import { DynamicRemotePlugin } from '@openshift/dynamic-plugin-sdk-webpack';
+import { fileURLToPath } from 'url';
+
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const extractCSS = new MiniCssExtractPlugin();
 const overpassTest = /overpass-.*\.(woff2?|ttf|eot|otf)(\?.*$|$)/;
 
-const config: webpack.Configuration = {
+// use type annotation instead of TS type
+/** @type {import('webpack').Configuration} */
+const config = {
   mode: 'development',
-  context: path.resolve(__dirname, 'src'),
+  context: path.resolve(__dirname, './src'),
+  entry: './index.ts',
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name]-bundle.js',
     chunkFilename: '[name]-chunk.js',
+    publicPath: './'
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx'],
@@ -24,18 +31,10 @@ const config: webpack.Configuration = {
       {
         test: /(\.jsx?)|(\.tsx?)$/,
         exclude: /node_modules/,
-        use: [
-          {
-            loader: 'ts-loader',
-            options: {
-              configFile: path.resolve(__dirname, 'tsconfig.json'),
-            },
-          },
-        ],
+        loader: 'ts-loader',
       },
       {
         test: /\.s?css$/,
-        exclude: /node_modules\/(?!(@patternfly)\/).*/,
         use: [
           {
             loader: MiniCssExtractPlugin.loader,
@@ -43,8 +42,6 @@ const config: webpack.Configuration = {
               publicPath: './',
             },
           },
-          { loader: 'cache-loader' },
-          { loader: 'thread-loader' },
           {
             loader: 'css-loader',
             options: {
@@ -59,9 +56,9 @@ const config: webpack.Configuration = {
           },
           {
             loader: 'sass-loader',
+            /** @type {import('sass-loader').Options} */
             options: {
               sourceMap: true,
-              outputStyle: 'compressed',
             },
           },
         ],
