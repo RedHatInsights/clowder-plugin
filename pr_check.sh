@@ -11,4 +11,12 @@ docker --config="$DOCKER_CONF" build -t "${IMAGE}:${IMAGE_TAG}" .
 
 TEST_RESULT=$?
 
+# Stubbed out for now
+mkdir -p $WORKSPACE/artifacts
+cat << EOF > $WORKSPACE/artifacts/junit-dummy.xml
+<testsuite tests="1">
+    <testcase classname="dummy" name="dummytest"/>
+</testsuite>
+EOF
+
 exit 0
