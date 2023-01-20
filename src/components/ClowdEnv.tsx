@@ -22,6 +22,7 @@ export type ClowdEnvStatus = {
   deployments?: ClowdEnvDeployment;
   ready?: boolean;
   conditions?: ClowdEnvCondition[];
+  targetNamespace?: string;
 };
 
 export type ClowdEnvKind = {
@@ -78,13 +79,13 @@ const Foo: React.FC = () => {
       }
 
       var link = "/k8s/cluster/cloud.redhat.com~v1alpha1~ClowdEnvironment/" + a.metadata?.name
-      var project = "/k8s/cluster/project.openshift.io~v1~Project/" + a.metadata?.namespace
+      var project = "/k8s/cluster/project.openshift.io~v1~Project/" + a.status?.targetNamespace
 
       newArray.push([
         {title: <Button variant="link" component="a" href={link} isInline>{a.metadata?.name}</Button>, }, 
+        {title: <Button variant="link" component="a" href={project} isInline>{a.status?.targetNamespace}</Button>, }, 
         {title: <Label color={col}>{appReady.toString()}</Label>},
         {title: <CombineError errors={errors}/>},
-        {title: <Button variant="link" component="a" href={project} isInline>{a.metadata?.namespace}</Button>, }, 
       ])
     })
     return newArray
@@ -96,7 +97,7 @@ const Foo: React.FC = () => {
       <Text style={{paddingTop: 20, paddingBottom: 20, color: "#555"}}>This page shows a list of all ClowdEnvs and their associated states.</Text>
       <React.Fragment>
           <SortableTable 
-            columns={[{title: "Name", transforms:[sortable]}, "Ready", "Error", "Project"]}
+            columns={[{title: "Name", transforms:[sortable]}, "Target Namespace", "Ready", "Error"]}
             rows={tabData()}
           >
           </SortableTable>
