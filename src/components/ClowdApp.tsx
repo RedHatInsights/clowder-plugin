@@ -90,11 +90,13 @@ const Foo: React.FC = () => {
       }
 
       var link = "/k8s/ns/" + a.metadata?.namespace + "/cloud.redhat.com~v1alpha1~ClowdApp/" + a.metadata?.name
+      var project = "/k8s/cluster/project.openshift.io~v1~Project/" + a.metadata?.namespace
+      var env = "/k8s/cluster/cloud.redhat.com~v1alpha1~ClowdEnvironment/" + a.spec?.envName
 
       newArray.push([
         {title: <Button variant="link" component="a" href={link} isInline>{a.metadata?.name}</Button>, }, 
-        a.metadata?.namespace, 
-        a.spec.envName, 
+        {title: <Button variant="link" component="a" href={project} isInline>{a.metadata?.namespace}</Button>, }, 
+        {title: <Button variant="link" component="a" href={env} isInline>{a.spec?.envName}</Button>, }, 
         {title: <Label color={col}>{appReady.toString()}</Label>},
         {title: <CombineError errors={errors}/>},
       ])
