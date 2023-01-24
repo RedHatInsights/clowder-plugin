@@ -26,6 +26,19 @@ See the plugin development section in
 [Console Dynamic Plugins README](/frontend/packages/console-dynamic-plugin-sdk/README.md) for details
 on how to run Bridge using local plugins.
 
+To check how it works on a cluster with a mocked frontend, clone an [Openshift Console](https://github.com/openshift/console). You'll probably need to edit the 
+/frontend/package.json and modify the build script
+
+```sh
+"build": "yarn clean && yarn generate && NODE_ENV=production NODE_OPTIONS='--openssl-legacy-provider --max-old-space-size=4096' yarn ts-node ./node_modules/.bin/webpack --mode=production",
+```
+
+Build the console and then run it with the plugin enabled.
+
+```sh
+./bin/bridge -plugins clowder-plugin=http://127.0.0.1:9001/
+```
+
 ## Deployment on cluster
 
 Console dynamic plugins are supposed to be deployed via [OLM operators](https://github.com/operator-framework).
