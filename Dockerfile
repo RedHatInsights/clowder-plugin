@@ -18,7 +18,11 @@ COPY src/ src/
 
 RUN yarn build
 
-FROM registry.access.redhat.com/ubi8/nginx-118
+FROM registry.access.redhat.com/ubi8/ubi-minimal:8.7-1031
+
+ENV NGINX_CONFIGURATION_PATH=/etc/nginx/nginx.conf
+
+RUN microdnf update && microdnf module enable nginx:1.18 && microdnf install nginx
 
 ADD ./nginx.conf "${NGINX_CONFIGURATION_PATH}"
 COPY --from=builder /build/dist /opt/clowder-plugin 
