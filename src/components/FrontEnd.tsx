@@ -6,33 +6,33 @@ import { PageSection, Title, Text } from '@patternfly/react-core';
 import { Table, TableHeader, TableBody, sortable } from '@patternfly/react-table';
 import { Label, Button, LabelProps } from '@patternfly/react-core'
 
-export type ClowdAppDeployment = {
+export type FrontendSpec = {
+    envName: string;
+}
+
+export type FrontendDeployment = {
   managedDeployments?: number;
   readyDeployments?: number;
 };
 
-export type ClowdAppCondition = {
-	type: string;
+export type FrontendCondition = {
+  type: string;
   status: string;
   lastProbeTime?: string;
   lastTransitionTime?: string;
   reason?: string;
   message?: string;
-}
-
-export type ClowdAppStatus = {
-  deployments?: ClowdAppDeployment;
-  ready?: boolean;
-  conditions?: ClowdAppCondition[];
 };
 
-export type ClowdSpec = {
-  envName: string;
-}
+export type FrontendStatus = {
+  deployments?: FrontendDeployment;
+  ready?: boolean;
+  conditions?: FrontendCondition[];
+};
 
-export type ClowdAppKind = {
-  spec: ClowdSpec;
-  status?: ClowdAppStatus;
+export type FrontendKind = {
+  spec: FrontendSpec;
+  status?: FrontendStatus;
 } & K8sResourceCommon;
 
 const CombineError = ({ errors }: { errors: React.ReactNode[] }) => {
@@ -49,18 +49,19 @@ const Foo: React.FC = () => {
   if (path[2] == "ns") {
     namespace = path[3]
   }
-  const [data, loaded] = useK8sWatchResource<ClowdAppKind[]>({
-    kind: 'cloud.redhat.com~v1alpha1~ClowdApp',
+
+  const [frontend,load] = useK8sWatchResource<FrontendKind[]>({
+    kind: 'cloud.redhat.com~v1alpha1~Frontend',
     isList: true,
     namespace: namespace
-  });  
+  })
 
-  const tabData = () => {
-    var newArray: ({title: React.ReactNode} | string | undefined)[][] = []
-    if (!loaded) {
+  const tabbData = () => {
+    var frontendArray: ({title: React.ReactNode} | string | undefined)[][] = []
+    if (!load) {
       return []
     }
-    data.forEach((a, b, c) => {
+    frontend.forEach((a, b, c) => {
 
       var appReady = true
       var col: LabelProps["color"]
@@ -89,11 +90,11 @@ const Foo: React.FC = () => {
         col = "red"
       }
 
-      var link = "/k8s/ns/" + a.metadata?.namespace + "/cloud.redhat.com~v1alpha1~ClowdApp/" + a.metadata?.name
+      var link = "/k8s/ns/" + a.metadata?.namespace + "/cloud.redhat.com~v1alpha1~Frontend/" + a.metadata?.name
       var project = "/k8s/cluster/project.openshift.io~v1~Project/" + a.metadata?.namespace
-      var env = "/k8s/cluster/cloud.redhat.com~v1alpha1~ClowdEnvironment/" + a.spec?.envName
+      var env = "/k8s/cluster/cloud.redhat.com~v1alpha1~FrontendEnvironment/" + a.spec?.envName
 
-      newArray.push([
+      frontendArray.push([
         {title: <Button variant="link" component="a" href={link} isInline>{a.metadata?.name}</Button>, }, 
         {title: <Button variant="link" component="a" href={project} isInline>{a.metadata?.namespace}</Button>, }, 
         {title: <Button variant="link" component="a" href={env} isInline>{a.spec?.envName}</Button>, }, 
@@ -101,11 +102,10 @@ const Foo: React.FC = () => {
         {title: <CombineError errors={errors}/>},
       ])
     })
-    return newArray
-
+    return frontendArray
+    
   }
 
-  
   return (
     <PageSection style={{ paddingTop: 20, paddingLeft: 20, overflow: "auto" }}>
       <Title headingLevel="h1" size="3xl">ClowdApp Status</Title>
@@ -113,7 +113,7 @@ const Foo: React.FC = () => {
       <React.Fragment>
           <SortableTable 
             columns={[{title: "Name", transforms:[sortable]}, "Namespace", "Environment Name", "Ready", "Error"]}
-            rows={tabData()}
+            rows={tabbData()}
           >
           </SortableTable>
         </React.Fragment>
