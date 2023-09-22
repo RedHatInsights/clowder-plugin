@@ -47,7 +47,8 @@
     "description": "Plasma reactors online. Initiating hyper drive.",
     "exposedModules": {
       "clowdApp": "./components/ClowdApp.tsx",
-      "clowdEnv": "./components/ClowdEnv.tsx"
+      "clowdEnv": "./components/ClowdEnv.tsx",
+      "frontEnd": "./components/FrontEnd.tsx"
     },
     "dependencies": {
       "@console/pluginAPI": "*"

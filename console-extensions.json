@@ -62,6 +62,30 @@
       "section": "clowder",
       "name": "Clowd Environments"
     }
+  },
+  {
+    "type": "console.page/resource/list",
+    "properties": {
+      "model": {
+        "group": "cloud.redhat.com", 
+        "version": "v1alpha1", 
+        "kind": "Frontend" 
+      },
+      "component": { "$codeRef": "frontEnd"}
+    }
+  },
+  {
+    "type": "console.navigation/resource-ns",
+    "properties": {
+      "id": "frontend",
+      "model": {
+        "group": "cloud.redhat.com", 
+        "version": "v1alpha1", 
+        "kind": "Frontend" 
+      },
+      "section": "clowder",
+      "name": "Frontends"
+    }
   }
 ]
 

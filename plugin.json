@@ -4,6 +4,7 @@
     "displayName": "Clowder Plugin",
     "description": "Clowder Plugin",
     "exposedModules": {
+        "frontEnd": "./components/FrontEnd.tsx",
         "clowdApp": "./components/ClowdApp.tsx",
         "clowdEnv": "./components/ClowdEnv.tsx"
     },
