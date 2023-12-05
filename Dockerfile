@@ -1,4 +1,4 @@
-FROM registry.access.redhat.com/ubi8/ubi:8.8-1009 as builder
+FROM registry.access.redhat.com/ubi8/ubi:8.9-1028 as builder
 
 RUN yum -y module enable nodejs:14
 RUN dnf install npm patch -y
@@ -18,7 +18,7 @@ COPY src/ src/
 
 RUN yarn build
 
-FROM registry.access.redhat.com/ubi8/ubi-minimal:8.8-1072.1697626218
+FROM registry.access.redhat.com/ubi8/ubi-minimal:8.9-1029
 
 ENV NGINX_CONFIGURATION_PATH=/etc/nginx/nginx.conf
 
