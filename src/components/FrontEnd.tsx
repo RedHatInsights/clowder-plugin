@@ -3,7 +3,14 @@ import * as React from 'react';
 import { K8sResourceCommon } from '@openshift-console/dynamic-plugin-sdk';
 import { useK8sWatchResource } from '@openshift-console/dynamic-plugin-sdk';
 import { PageSection, Title, Text } from '@patternfly/react-core';
-import { Table, TableHeader, TableBody, sortable } from '@patternfly/react-table';
+import {
+	sortable
+} from '@patternfly/react-table';
+import {
+	Table,
+	TableHeader,
+	TableBody
+} from '@patternfly/react-table/deprecated';
 import { Label, Button, LabelProps } from '@patternfly/react-core'
 
 export type FrontendSpec = {
@@ -98,7 +105,7 @@ const Foo: React.FC = () => {
         {title: <Button variant="link" component="a" href={link} isInline>{a.metadata?.name}</Button>, }, 
         {title: <Button variant="link" component="a" href={project} isInline>{a.metadata?.namespace}</Button>, }, 
         {title: <Button variant="link" component="a" href={env} isInline>{a.spec?.envName}</Button>, }, 
-        {title: <Label color={col}>{appReady.toString()}</Label>},
+        {title: <Label textMaxWidth="12px" color={col}>{appReady.toString()}</Label>},
         {title: <CombineError errors={errors}/>},
       ])
     })
