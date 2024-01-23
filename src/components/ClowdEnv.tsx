@@ -1,7 +1,14 @@
 import * as React from 'react';
 import { K8sResourceCommon, useK8sWatchResource } from '@openshift-console/dynamic-plugin-sdk';
 import { PageSection, Title, Text } from '@patternfly/react-core';
-import { Table, TableHeader, TableBody, sortable } from '@patternfly/react-table';
+import {
+	sortable
+} from '@patternfly/react-table';
+import {
+	Table,
+	TableHeader,
+	TableBody
+} from '@patternfly/react-table/deprecated';
 import { Label, Button, LabelProps } from '@patternfly/react-core'
 
 export type ClowdEnvDeployment = {
