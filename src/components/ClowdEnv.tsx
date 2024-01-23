@@ -1,7 +1,14 @@
 import * as React from 'react';
 import { K8sResourceCommon, useK8sWatchResource } from '@openshift-console/dynamic-plugin-sdk';
 import { PageSection, Title, Text } from '@patternfly/react-core';
-import { Table, TableHeader, TableBody, sortable } from '@patternfly/react-table';
+import {
+	sortable
+} from '@patternfly/react-table';
+import {
+	Table,
+	TableHeader,
+	TableBody
+} from '@patternfly/react-table/deprecated';
 import { Label, Button, LabelProps } from '@patternfly/react-core'
 
 export type ClowdEnvDeployment = {
@@ -84,7 +91,7 @@ const Foo: React.FC = () => {
       newArray.push([
         {title: <Button variant="link" component="a" href={link} isInline>{a.metadata?.name}</Button>, }, 
         {title: <Button variant="link" component="a" href={project} isInline>{a.status?.targetNamespace}</Button>, }, 
-        {title: <Label color={col}>{appReady.toString()}</Label>},
+        {title: <Label textMaxWidth="12px" color={col}>{appReady.toString()}</Label>},
         {title: <CombineError errors={errors}/>},
       ])
     })

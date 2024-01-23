@@ -10,13 +10,15 @@
     "i18n": "i18next \"src/**/*.{js,jsx,ts,tsx}\" [-oc] -c i18next-parser.config.js"
   },
   "dependencies": {
-    "@openshift-console/dynamic-plugin-sdk": "0.0.18",
-    "@patternfly/patternfly": "4.222.4",
-    "@patternfly/react-core": "4.267.6",
+    "@openshift-console/dynamic-plugin-sdk": "^0.0.10",
+    "@patternfly/patternfly": "5.1.0",
+    "@patternfly/react-core": "^5.1.2",
     "@patternfly/react-table": "4.112.6",
     "@patternfly/react-tokens": "^4.94.3",
+    "@popperjs/core": "^2.11.8",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "tippy.js": "^6.3.7"
   },
   "devDependencies": {
     "@openshift-console/dynamic-plugin-sdk-webpack": "0.0.9",
@@ -29,7 +31,7 @@
     "css-loader": "6.7.x",
     "file-loader": "6.x",
     "http-server": "14.1.x",
-    "i18next-parser": "^7.2.0",
+    "i18next-parser": "^8.12.0",
     "mini-css-extract-plugin": "^2.7.2",
     "read-pkg": "7.x",
     "resolve-url-loader": "5.x",
