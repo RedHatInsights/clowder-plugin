@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@openshift-console/dynamic-plugin-sdk": "0.0.18",
-    "@patternfly/patternfly": "5.1.0",
+    "@patternfly/patternfly": "4.222.4",
     "@patternfly/react-core": "4.267.6",
     "@patternfly/react-table": "4.112.6",
     "@patternfly/react-tokens": "^4.94.3",
