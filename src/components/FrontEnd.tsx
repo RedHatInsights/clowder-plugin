@@ -163,7 +163,7 @@ class SortableTable extends React.Component<SortableTableProps, SortableTableSta
   }
 
   onSort(_event: any, index: number, direction: SortByDirection) {
-    const sortedRows = this.state.rows.sort((a, b) => (a[index].title.localeCompare(b[index].title)));
+    const sortedRows = this.state.rows.sort((a, b) => (a[index].title < b[index].title ? -1 : a[index].title > b[index].title ? 1 : 0));
     this.setState({
       sortBy: {
         index,
