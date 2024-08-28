@@ -1,15 +1,13 @@
 import * as React from 'react';
 import { K8sResourceCommon, useK8sWatchResource } from '@openshift-console/dynamic-plugin-sdk';
 import { PageSection, Title, Text } from '@patternfly/react-core';
-import {
-	sortable
-} from '@patternfly/react-table';
+import { sortable } from '@patternfly/react-table';
+import { Label, Button, LabelProps } from '@patternfly/react-core'
 import {
 	Table,
 	TableHeader,
 	TableBody
 } from '@patternfly/react-table/deprecated';
-import { Label, Button, LabelProps } from '@patternfly/react-core'
 
 export type ClowdEnvDeployment = {
   managedDeployments?: number;
@@ -149,7 +147,14 @@ class SortableTable extends React.Component<SortableTableProps, SortableTableSta
   }
 
   onSort(_event: any, index: number, direction: SortByDirection) {
-    const sortedRows = this.state.rows.sort((a, b) => (a[index].title < b[index].title ? -1 : a[index].title > b[index].title ? 1 : 0));
+    const sortedRows = [...this.state.rows]
+    
+    sortedRows.sort((a, b) => {
+      const aValue = JSON.stringify(a[index].title.props.children)
+      const bValue = JSON.stringify(b[index].title.props.children)
+      return aValue.localeCompare(bValue)
+    });
+
     this.setState({
       sortBy: {
         index,
