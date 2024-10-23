@@ -2,7 +2,7 @@
 
 set -exv
 
-IMAGE="quay.io/cloudservices/clowder-plugin"
+IMAGE="quay.io/redhat-services-prod/hcm-eng-prod-tenant/clowder-plugin"
 IMAGE_TAG=$(git rev-parse --short=7 HEAD)
 SECURITY_COMPLIANCE_TAG="sc-$(date +%Y%m%d)-$(git rev-parse --short=7 HEAD)"
 
