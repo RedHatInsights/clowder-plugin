@@ -48,7 +48,8 @@
     "exposedModules": {
       "clowdApp": "./components/ClowdApp.tsx",
       "clowdEnv": "./components/ClowdEnv.tsx",
-      "frontEnd": "./components/FrontEnd.tsx"
+      "frontEnd": "./components/FrontEnd.tsx",
+      "cyndi": "./components/Cyndi.tsx"
     },
     "dependencies": {
       "@console/pluginAPI": "*"
