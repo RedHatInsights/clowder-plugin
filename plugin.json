@@ -6,7 +6,8 @@
     "exposedModules": {
         "frontEnd": "./components/FrontEnd.tsx",
         "clowdApp": "./components/ClowdApp.tsx",
-        "clowdEnv": "./components/ClowdEnv.tsx"
+        "clowdEnv": "./components/ClowdEnv.tsx",
+        "cyndi": "./components/Cyndi.tsx"
     },
     "dependencies": {
         "@console/pluginAPI": "*"

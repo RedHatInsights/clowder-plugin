@@ -1,5 +1,6 @@
 export * from './components/FrontEnd'
 export * from './components/ClowdApp'
 export * from './components/ClowdEnv'
+export * from './components/Cyndi'
 export * from './utils/bar'
 export * from './utils/telemetry'

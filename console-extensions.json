@@ -85,6 +85,30 @@
       },
       "section": "clowder",
       "name": "Frontends"
+    },
+  },
+  {
+    "type": "console.page/resource/list",
+    "properties": {
+      "model": {
+        "group": "cyndi.cloud.redhat.com", 
+        "version": "v1alpha1", 
+        "kind": "CyndiPipeline" 
+      },
+      "component": { "$codeRef": "cyndi"}
+    },
+  },
+  {
+    "type": "console.navigation/resource-ns",
+    "properties": {
+      "id": "cyndi",
+      "model": {
+        "group": "cyndi.cloud.redhat.com", 
+        "version": "v1alpha1", 
+        "kind": "CyndiPipeline" 
+      },
+      "section": "clowder",
+      "name": "Cyndi Pipelines"
     }
   }
 ]
