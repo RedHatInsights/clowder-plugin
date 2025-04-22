@@ -1,4 +1,4 @@
-FROM registry.access.redhat.com/ubi8/ubi:8.10-1222 as builder
+FROM registry.access.redhat.com/ubi8/ubi:8.10-1222 AS builder
 
 RUN yum -y module enable nodejs:18
 RUN dnf install npm patch -y
