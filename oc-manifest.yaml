@@ -79,15 +79,15 @@ objects:
   kind: ConsolePlugin
   metadata:
     name: clowder-plugin
-spec:
-  backend:
-    service:
-      basePath: '/'
-      name: clowder-plugin
-      namespace: clowder-system
-      port: 9001
-    type: Service
-  displayName: 'OpenShift Console Demo Plugin'
+  spec:
+    backend:
+      service:
+        basePath: '/'
+        name: clowder-plugin
+        namespace: clowder-system
+        port: 9001
+      type: Service
+    displayName: 'OpenShift Console Demo Plugin'
 - apiVersion: networking.k8s.io/v1
   kind: NetworkPolicy
   metadata:
