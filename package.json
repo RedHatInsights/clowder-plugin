@@ -2,6 +2,9 @@
   "name": "@console/dynamic-demo-plugin",
   "version": "0.0.0",
   "private": true,
+  "engines": {
+    "node": "20 || 22" 
+  },
   "scripts": {
     "pre-build": "rm -rf ./dist && yarn install",
     "build": "yarn pre-build & NODE_ENV=production webpack --config webpack.config.mjs",
