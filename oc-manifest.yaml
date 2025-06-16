@@ -75,7 +75,7 @@ objects:
       app: clowder-plugin
     type: ClusterIP
     sessionAffinity: None
-- apiVersion: console.openshift.io/v1alpha1
+- apiVersion: console.openshift.io/v1
   kind: ConsolePlugin
   metadata:
     name: clowder-plugin
