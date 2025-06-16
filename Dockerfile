@@ -1,6 +1,6 @@
 FROM registry.access.redhat.com/ubi8/ubi:8.10-1304 AS builder
 
-RUN yum -y module enable nodejs:18
+RUN yum -y module enable nodejs:20
 RUN dnf install npm patch -y
 RUN npm install yarn -g
 
