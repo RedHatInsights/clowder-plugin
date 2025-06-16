@@ -28,5 +28,8 @@ ADD ./nginx.conf "${NGINX_CONFIGURATION_PATH}"
 COPY --from=builder /build/dist /opt/clowder-plugin 
 COPY --from=builder /build/locales/ /opt/clowder-plugin/locales/
 
+RUN mkdir -p /var/log/nginx && \
+    chmod -R 777 /var/log/nginx
+
 # Run script uses standard ways to run the application
 CMD nginx -g "daemon off;"
