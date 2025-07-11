@@ -18,7 +18,7 @@ COPY src/ src/
 
 RUN yarn build
 
-FROM registry.access.redhat.com/ubi8/ubi-minimal:8.10-1295.1749680713
+FROM registry.access.redhat.com/ubi8/ubi-minimal:8.10-1752068421
 
 ENV NGINX_CONFIGURATION_PATH=/etc/nginx/nginx.conf
 
