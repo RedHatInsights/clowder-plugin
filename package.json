@@ -29,7 +29,7 @@
     "css-loader": "6.7.x",
     "file-loader": "6.x",
     "http-server": "14.1.x",
-    "i18next-parser": "^7.2.0",
+    "i18next-parser": "^9.0.0",
     "mini-css-extract-plugin": "^2.7.2",
     "read-pkg": "7.x",
     "resolve-url-loader": "5.x",
