@@ -17,7 +17,7 @@
     "@patternfly/patternfly": "^5.1.0",
     "@patternfly/react-core": "^5.1.2",
     "@patternfly/react-table": "^5.1.2",
-    "@patternfly/react-tokens": "^5.1.2",
+    "@patternfly/react-tokens": "^6.0.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "@types/node": "^20.19.0",
