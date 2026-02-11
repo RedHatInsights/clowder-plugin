@@ -1,4 +1,4 @@
-FROM registry.access.redhat.com/ubi8/ubi:8.10-1770785762 AS builder
+FROM registry.access.redhat.com/ubi9:9.7-1770238273 AS builder
 
 RUN yum -y module enable nodejs:20
 RUN dnf install npm patch -y
@@ -18,11 +18,11 @@ COPY src/ src/
 
 RUN yarn build
 
-FROM registry.access.redhat.com/ubi8/ubi-minimal:8.10-1770785328
+FROM registry.access.redhat.com/ubi9-minimal:9.7-1770267347
 
 ENV NGINX_CONFIGURATION_PATH=/etc/nginx/nginx.conf
 
-RUN microdnf update && microdnf module enable nginx:1.22 && microdnf install nginx
+RUN microdnf update -y && microdnf module enable nginx:1.22 -y && microdnf install nginx -y
 
 ADD ./nginx.conf "${NGINX_CONFIGURATION_PATH}"
 COPY --from=builder /build/dist /opt/clowder-plugin 
