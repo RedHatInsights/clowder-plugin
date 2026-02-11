@@ -342,10 +342,10 @@
     "@parcel/watcher-win32-ia32" "2.5.1"
     "@parcel/watcher-win32-x64" "2.5.1"
 
-"@patternfly/patternfly@^5.1.0":
-  version "5.4.2"
-  resolved "https://registry.yarnpkg.com/@patternfly/patternfly/-/patternfly-5.4.2.tgz#4a87d6a5fb2ffd526b4b9597b651f13ecf8ddd4f"
-  integrity sha512-+BaokNR8/AmTYMESxby9UtQXPGACg449BXQd0KejAvW/uGxlgO6mY1X1205DeBEHoK3e/vXkYXjvZPpv/tcxSA==
+"@patternfly/patternfly@^6.0.0":
+  version "6.4.0"
+  resolved "https://registry.yarnpkg.com/@patternfly/patternfly/-/patternfly-6.4.0.tgz#8ccc792573a525440f828ca1fb11eade864afb4d"
+  integrity sha512-4drFhg74sEc/fftark5wZevODIog17qR4pwLCdB3j5iK3Uu5oMA2SdLhsEeEQggalfnFzve/Km87MdVR0ghhvQ==
 
 "@patternfly/react-core@^5.1.2", "@patternfly/react-core@^5.4.14":
   version "5.4.14"
