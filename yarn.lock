@@ -241,10 +241,10 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
-"@openshift-console/dynamic-plugin-sdk-webpack@4.19.0":
-  version "4.19.0"
-  resolved "https://registry.yarnpkg.com/@openshift-console/dynamic-plugin-sdk-webpack/-/dynamic-plugin-sdk-webpack-4.19.0.tgz#6a0171702d9089f6cbe6cb74665ea855bb42af7e"
-  integrity sha512-a4zxkrEe4qhKir5R21OK/wJVCn8Gzm/y3smLxRDi/BjHFgcnNQKEgCMP4IhvTlT0NRJQ4Q9AmPT1WXBlV3ip3g==
+"@openshift-console/dynamic-plugin-sdk-webpack@4.20.0":
+  version "4.20.0"
+  resolved "https://registry.yarnpkg.com/@openshift-console/dynamic-plugin-sdk-webpack/-/dynamic-plugin-sdk-webpack-4.20.0.tgz#5b42772625bf44fc3faf76ecf94b5223ed3e6644"
+  integrity sha512-cTpBy8Jz2C65Qy/3fXIRv8IehvKRkms8rMcjz0KGo7DRoaDPnSyMXi5gH0BIA01nr5U6sBncNSbaD/3PXaZaig==
   dependencies:
     "@openshift/dynamic-plugin-sdk-webpack" "^4.0.2"
     ajv "^6.12.3"

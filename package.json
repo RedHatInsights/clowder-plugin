@@ -13,7 +13,7 @@
     "@openshift-console/dynamic-plugin-sdk": "4.20.0"
   },
   "devDependencies": {
-    "@openshift-console/dynamic-plugin-sdk-webpack": "4.19.0",
+    "@openshift-console/dynamic-plugin-sdk-webpack": "4.20.0",
     "@patternfly/patternfly": "^6.0.0",
     "@patternfly/react-core": "^6.0.0",
     "@patternfly/react-table": "^6.0.0",
