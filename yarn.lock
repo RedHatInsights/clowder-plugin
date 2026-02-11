@@ -230,13 +230,12 @@
     semver "6.x"
     webpack "^5.75.0"
 
-"@openshift-console/dynamic-plugin-sdk@4.19.0":
-  version "4.19.0"
-  resolved "https://registry.yarnpkg.com/@openshift-console/dynamic-plugin-sdk/-/dynamic-plugin-sdk-4.19.0.tgz#c9b6c1338b14c174520bff827f4e2be5ab2290a4"
-  integrity sha512-v1pNt2eDCyXwRZX+66QDnaYtrwbLapRMtCQql65pgePsE5/5aoOSGIsTjIB812j+oagAB1yk4r7OUlopA2F8kw==
+"@openshift-console/dynamic-plugin-sdk@4.20.0":
+  version "4.20.0"
+  resolved "https://registry.yarnpkg.com/@openshift-console/dynamic-plugin-sdk/-/dynamic-plugin-sdk-4.20.0.tgz#f5e6aaa147f02f651e3e6a734a1fb55555bad56a"
+  integrity sha512-Rf6XfWweXccmz10UpBT0tJTXBDf6jqRaiwQjzXGJ4W+ewVh5BQwxXIeBwzxjuAr3Bt972MhIqksHrlh54moERA==
   dependencies:
     "@patternfly/react-topology" "^6.2.0"
-    classnames "2.x"
     immutable "3.x"
     lodash "^4.17.21"
     react "^17.0.1"
@@ -1223,11 +1222,6 @@ chrome-trace-event@^1.0.2:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/chrome-trace-event/-/chrome-trace-event-1.0.4.tgz#05bffd7ff928465093314708c93bdfa9bd1f0f5b"
   integrity sha512-rNjApaLzuwaOTjCiT8lSDdGN1APCiqkChLMJxJPWLunPAt5fy8xgU9/jNOchV84wfIxrA0lRQB7oCT8jrn/wrQ==
-
-classnames@2.x:
-  version "2.5.1"
-  resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.5.1.tgz#ba774c614be0f016da105c858e7159eae8e7687b"
-  integrity sha512-saHYOzhIQs6wy2sVxTM6bUDsQO4F50V9RQ22qBpEdCW+I+/Wmke2HOl6lS6dTpdxVhb88/I6+Hs+438c3lfUow==
 
 clone-buffer@^1.0.0:
   version "1.0.0"
