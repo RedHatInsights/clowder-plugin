@@ -2,7 +2,7 @@ import * as React from 'react';
 //import { K8sResourceCommon, useK8sWatchResource } from '@openshift-console/dynamic-plugin-sdk';
 import { K8sResourceCommon } from '@openshift-console/dynamic-plugin-sdk';
 import { useK8sWatchResource } from '@openshift-console/dynamic-plugin-sdk';
-import { PageSection, Title, Text } from '@patternfly/react-core';
+import { PageSection, Title, Content } from '@patternfly/react-core';
 import {
 	sortable
 } from '@patternfly/react-table';
@@ -103,7 +103,7 @@ const Foo: React.FC = () => {
   return (
     <PageSection style={{ paddingTop: 20, paddingLeft: 20, overflow: "auto" }}>
       <Title headingLevel="h1" size="3xl">Cyndi Pipeline Status</Title>
-      <Text style={{paddingTop: 20, paddingBottom: 20, color: "#555"}}>This page shows a list of all Cyndi Pipelines and their valid state.</Text>
+      <Content style={{paddingTop: 20, paddingBottom: 20, color: "#555"}}>This page shows a list of all Cyndi Pipelines and their valid state.</Content>
       <React.Fragment>
           <SortableTable 
             columns={[{title: "Name", transforms:[sortable]}, "Namespace", "Initial Sync", "Valid", "Host Count", "Error"]}
