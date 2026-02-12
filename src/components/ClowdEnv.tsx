@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { K8sResourceCommon, useK8sWatchResource } from '@openshift-console/dynamic-plugin-sdk';
-import { PageSection, Title, Text } from '@patternfly/react-core';
+import { PageSection, Title, Content } from '@patternfly/react-core';
 import { sortable } from '@patternfly/react-table';
 import { Label, Button, LabelProps } from '@patternfly/react-core'
 import {
@@ -99,7 +99,7 @@ const Foo: React.FC = () => {
   return (
     <PageSection style={{ paddingTop: 20, paddingLeft: 20, overflow: "auto" }}>
       <Title headingLevel="h1" size="3xl">Clowd Environment Status</Title>
-      <Text style={{paddingTop: 20, paddingBottom: 20, color: "#555"}}>This page shows a list of all ClowdEnvs and their associated states.</Text>
+      <Content style={{paddingTop: 20, paddingBottom: 20, color: "#555"}}>This page shows a list of all ClowdEnvs and their associated states.</Content>
       <React.Fragment>
           <SortableTable 
             columns={[{title: "Name", transforms:[sortable]}, "Target Namespace", "Ready", "Error"]}
