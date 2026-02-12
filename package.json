@@ -34,7 +34,7 @@
     "read-pkg": "7.x",
     "resolve-url-loader": "5.x",
     "sass": "^1.57.1",
-    "sass-loader": "13.x",
+    "sass-loader": "16.x",
     "ts-loader": "9.5.4",
     "typescript": "^5.7.2",
     "webpack": "^5.75.0",
