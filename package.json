@@ -31,7 +31,7 @@
     "http-server": "14.1.x",
     "i18next-parser": "^9.0.0",
     "mini-css-extract-plugin": "^2.7.2",
-    "read-pkg": "7.x",
+    "read-pkg": "10.x",
     "resolve-url-loader": "5.x",
     "sass": "^1.57.1",
     "sass-loader": "13.x",
