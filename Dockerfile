@@ -1,4 +1,4 @@
-FROM registry.access.redhat.com/ubi9:9.7-1770238273 AS builder
+FROM registry.access.redhat.com/ubi9:9.7-1771346757 AS builder
 
 RUN yum -y module enable nodejs:20
 RUN dnf install npm patch -y
