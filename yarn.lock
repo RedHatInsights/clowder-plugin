@@ -220,18 +220,18 @@
     "@jridgewell/resolve-uri" "^3.1.0"
     "@jridgewell/sourcemap-codec" "^1.4.14"
 
-"@openshift-console/dynamic-plugin-sdk-webpack@4.20.0":
-  version "4.20.0"
-  resolved "https://registry.yarnpkg.com/@openshift-console/dynamic-plugin-sdk-webpack/-/dynamic-plugin-sdk-webpack-4.20.0.tgz#5b42772625bf44fc3faf76ecf94b5223ed3e6644"
-  integrity sha512-cTpBy8Jz2C65Qy/3fXIRv8IehvKRkms8rMcjz0KGo7DRoaDPnSyMXi5gH0BIA01nr5U6sBncNSbaD/3PXaZaig==
+"@openshift-console/dynamic-plugin-sdk-webpack@4.21.0":
+  version "4.21.0"
+  resolved "https://registry.yarnpkg.com/@openshift-console/dynamic-plugin-sdk-webpack/-/dynamic-plugin-sdk-webpack-4.21.0.tgz#9bf3143a731e04aea9d53b0e287ab2138da43e3d"
+  integrity sha512-DkuPXyDbqaKP2Hs7nIScJSzcVFxA6yDpN1p6SEPzVa1F7Ygx6oBAwJHsn6EHwB+5pl9lM97/2xTLJpeQ12dCag==
   dependencies:
-    "@openshift/dynamic-plugin-sdk-webpack" "^4.0.2"
+    "@openshift/dynamic-plugin-sdk-webpack" "^4.1.0"
     ajv "^6.12.3"
     chalk "2.4.x"
     comment-json "4.x"
     find-up "4.x"
     glob "7.x"
-    lodash "^4.17.21"
+    lodash "^4.17.23"
     read-pkg "5.x"
     semver "6.x"
     webpack "^5.75.0"
@@ -255,7 +255,7 @@
     reselect "4.x"
     typesafe-actions "^4.2.1"
 
-"@openshift/dynamic-plugin-sdk-webpack@^4.0.2":
+"@openshift/dynamic-plugin-sdk-webpack@^4.1.0":
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/@openshift/dynamic-plugin-sdk-webpack/-/dynamic-plugin-sdk-webpack-4.1.0.tgz#eb62ee18d975431411b78da15c9774d95dbe1fa7"
   integrity sha512-Pkq6R+fkoE0llgv9WJBcotViAPywrzDkpWK0HSTmrVyfEuWS5cuZUs8ono6L5w9BqDBRXm3ceEuUAZA/Zrar1w==
