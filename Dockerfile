@@ -18,7 +18,7 @@ COPY src/ src/
 
 RUN yarn build
 
-FROM registry.access.redhat.com/ubi9/ubi-minimal:9.7-1778072020
+FROM registry.access.redhat.com/ubi9/ubi-minimal:9.7-1778562320
 
 ENV NGINX_CONFIGURATION_PATH=/etc/nginx/nginx.conf
 
