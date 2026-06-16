@@ -1,90 +1,90 @@
 # OpenShift Clowder Plugin
 
-## Local development
+A dynamic plugin for the OpenShift Console that provides Clowder-related UI components. Built with
+the OpenShift Console Dynamic Plugin SDK and PatternFly.
 
-1. `yarn build` to build the plugin, generating output to `dist` directory
-2. `yarn http-server` to start an HTTP server hosting the generated assets
+## Prerequisites
 
+- Node.js and Yarn
+- OpenShift Console (for integration testing)
+- Docker or Podman (for container builds)
+
+## Development Setup
+
+### Local Development
+
+```sh
+# Build the plugin (output to dist/)
+yarn build
+
+# Start a local HTTP server for the built plugin
+yarn http-server
 ```
-Starting up http-server, serving ./dist
-Available on:
-  http://127.0.0.1:9001
-  http://192.168.1.190:9001
-  http://10.40.192.80:9001
-Hit CTRL-C to stop the server
-```
 
-The server runs on port 9001 with caching disabled and CORS enabled. Additional
-[server options](https://github.com/http-party/http-server#available-options) can be passed to
-the script, for example:
+The server runs on port 9001 with caching disabled and CORS enabled. Pass additional
+[server options][http-server-options] to the script:
 
 ```sh
 yarn http-server -a 127.0.0.1
 ```
 
-See the plugin development section in
-[Console Dynamic Plugins README](/frontend/packages/console-dynamic-plugin-sdk/README.md) for details
-on how to run Bridge using local plugins.
+### Testing with OpenShift Console
 
-To check how it works on a cluster with a mocked frontend, clone an [Openshift Console](https://github.com/openshift/console). You'll probably need to edit the 
-/frontend/package.json and modify the build script
-
-```sh
-"build": "yarn clean && yarn generate && NODE_ENV=production NODE_OPTIONS='--openssl-legacy-provider --max-old-space-size=4096' yarn ts-node ./node_modules/.bin/webpack --mode=production",
-```
-
-Build the console and then run it with the plugin enabled.
+1. Clone [OpenShift Console][openshift-console]
+2. Build the console
+3. Run with the plugin enabled:
 
 ```sh
 ./bin/bridge -plugins clowder-plugin=http://127.0.0.1:9001/
 ```
 
-## Deployment on cluster
+## Deployment
 
-Console dynamic plugins are supposed to be deployed via [OLM operators](https://github.com/operator-framework).
-In case of demo plugin, we just apply a minimal OpenShift manifest which adds the necessary resources.
+### On Cluster
+
+Apply the OpenShift manifest:
 
 ```sh
 oc process --local -f oc-manifest.yaml | oc apply -f -
 ```
 
-Note that the `Service` exposing the HTTP server is annotated to have a signed
-[service serving certificate](https://docs.openshift.com/container-platform/4.6/security/certificates/service-serving-certificate.html)
-generated and mounted into the image. This allows us to run the server with HTTP/TLS enabled, using
-a trusted CA certificate.
+The `Service` is annotated for a signed service serving certificate, enabling HTTP/TLS with a
+trusted CA certificate.
 
-## Enabling the plugin
+### Enabling the Plugin
 
-Once deployed on the cluster, demo plugin must be enabled before it can be loaded by Console.
-
-To enable the plugin manually, edit [Console operator](https://github.com/openshift/console-operator)
-config and make sure the plugin's name is listed in the `spec.plugins` sequence (add one if missing):
+Edit the Console operator config to add the plugin:
 
 ```sh
 oc edit console.operator.openshift.io cluster
 ```
 
 ```yaml
-# ...
 spec:
   plugins:
     - clowder-plugin
-# ...
 ```
 
-## Docker image
+### Container Image
 
-Following commands should be executed in Console repository root.
+```sh
+# Build
+docker build -f Dockerfile -t quay.io/$USER/clowder-plugin .
 
-1. Build the image:
-   ```sh
-   docker build -f Dockerfile.nginx -t quay.io/$USER/console-demo-plugin .
-   ```
-2. Run the image:
-   ```sh
-   docker run -it -p 9001:9001 quay.io/$USER/console-demo-plugin
-   ```
-3. Push the image to image registry:
-   ```sh
-   docker push quay.io/$USER/console-demo-plugin
-   ```
+# Run locally
+docker run -it -p 9001:9001 quay.io/$USER/clowder-plugin
+
+# Push
+docker push quay.io/$USER/clowder-plugin
+```
+
+## CI/CD
+
+- `platsec.yml` — platform security scanning via GitHub Actions
+
+## License
+
+No license file is included in this repository.
+
+[http-server-options]: https://github.com/http-party/http-server#available-options
+[openshift-console]: https://github.com/openshift/console
