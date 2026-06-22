@@ -20,14 +20,13 @@ http-server.sh          # Local development server script
 
 ## Key Design Decisions
 
-- **Dynamic Plugin SDK.** Uses `@openshift-console/dynamic-plugin-sdk` (v4.20.0) which allows the
-  plugin to be loaded dynamically by the console without rebuilding the entire console application.
-- **PatternFly 6.** UI components use PatternFly 6 (`@patternfly/react-core`, `react-table`,
+- **Dynamic Plugin SDK.** Uses `@openshift-console/dynamic-plugin-sdk` which allows the plugin to
+  be loaded dynamically by the console without rebuilding the entire console application.
+- **PatternFly.** UI components use PatternFly (`@patternfly/react-core`, `react-table`,
   `react-tokens`) for consistent styling with the OpenShift console.
 - **Webpack bundling.** The plugin is bundled as a standalone webpack module using the dynamic
   plugin SDK's webpack integration, producing assets served by a static HTTP server.
-- **React 17.** Pinned to React 17.0.2 for compatibility with the OpenShift Console host
-  application.
+- **React.** Pinned to the React version expected by the OpenShift Console host application.
 
 ## Deployment Model
 

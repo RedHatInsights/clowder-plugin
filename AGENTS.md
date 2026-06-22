@@ -3,14 +3,14 @@
 ## Project Overview
 
 A dynamic plugin for the OpenShift Console that adds Clowder-specific UI components. Built with the
-OpenShift Console Dynamic Plugin SDK (v4.20.0) and PatternFly 6. Deployed as static assets served
+OpenShift Console Dynamic Plugin SDK and PatternFly. Deployed as static assets served
 via an HTTP server and loaded dynamically by the console at runtime.
 
 ## Dependencies
 
-- **Runtime:** React 17, PatternFly 6, OpenShift Console Dynamic Plugin SDK 4.20.0
+- **Runtime:** React, PatternFly, OpenShift Console Dynamic Plugin SDK
 - **Build:** Webpack, TypeScript
-- **Dev:** http-server (local development), Node.js, Yarn
+- **Dev:** http-server (local development), Node.js 20, Yarn
 - **CI:** GitHub Actions (platsec.yml)
 
 ## Development Commands
@@ -40,15 +40,15 @@ pipeline and deployment model details.
 ## Code Style
 
 - TypeScript with strict mode (configured via `tsconfig.json`)
-- React functional components with PatternFly 6
+- React functional components with PatternFly
 - Webpack with ESM configuration (`webpack.config.mjs`)
 - No linter configured in the repository
 
 ## Common Mistakes
 
-1. **Using the wrong React version.** The plugin is pinned to React 17.0.2 for compatibility with
-   the OpenShift Console host. Upgrading React without verifying console compatibility will cause
-   runtime errors.
+1. **Using the wrong React version.** The plugin's React version must match what the OpenShift
+   Console host expects. Changing it without verifying console compatibility will cause runtime
+   errors.
 
 2. **Forgetting to update `console-extensions.json`.** New UI extension points must be registered
    in this file. The console will not discover unregistered components regardless of their export.

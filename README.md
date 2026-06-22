@@ -5,7 +5,7 @@ the OpenShift Console Dynamic Plugin SDK and PatternFly.
 
 ## Prerequisites
 
-- Node.js and Yarn
+- Node.js 20 and Yarn
 - OpenShift Console (for integration testing)
 - Docker or Podman (for container builds)
 
