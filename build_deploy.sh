@@ -23,7 +23,11 @@ fi
 
 DOCKER_CONF="$PWD/.docker"
 mkdir -p "$DOCKER_CONF"
-docker --config="$DOCKER_CONF" login -u="$QUAY_USER" -p="$QUAY_TOKEN" quay.io
-docker --config="$DOCKER_CONF" login -u="$RH_REGISTRY_USER" -p="$RH_REGISTRY_TOKEN" registry.redhat.io
+# Disable xtrace and pass passwords via stdin so registry tokens are never
+# expanded into the CI log stream or process argv (CWE-532 / CWE-214).
+set +x
+docker --config="$DOCKER_CONF" login -u="$QUAY_USER" --password-stdin quay.io <<<"$QUAY_TOKEN"
+docker --config="$DOCKER_CONF" login -u="$RH_REGISTRY_USER" --password-stdin registry.redhat.io <<<"$RH_REGISTRY_TOKEN"
+set -x
 docker --config="$DOCKER_CONF" build -t "${IMAGE}:${IMAGE_TAG}" .
 docker --config="$DOCKER_CONF" push "${IMAGE}:${IMAGE_TAG}"
