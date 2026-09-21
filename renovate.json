@@ -1,0 +1,32 @@
+{
+	"$schema": "https://docs.renovatebot.com/renovate-schema.json",
+	"minimumReleaseAge": "7 days",
+	"extends": [
+		":disableMajorUpdates",
+		"helpers:pinGitHubActionDigests",
+		"helpers:disableTypesNodeMajor",
+		"github>konflux-ci/mintmaker-presets:cve-automerge-high"
+	],
+	"packageRules": [
+		{
+			"description": "Group non-major npm development dependencies",
+			"matchManagers": [ "npm" ],
+			"matchDepTypes": [ "devDependencies" ],
+			"matchUpdateTypes": [ "minor", "patch" ],
+			"groupName": "npm development dependencies"
+		},
+		{
+			"description": "Group non-major npm production dependencies",
+			"matchManagers": [ "npm" ],
+			"matchDepTypes": [ "dependencies", "optionalDependencies" ],
+			"matchUpdateTypes": [ "minor", "patch" ],
+			"groupName": "npm production dependencies"
+		},
+		{
+			"description": "Group container image updates",
+			"matchManagers": [ "dockerfile" ],
+			"matchUpdateTypes": [ "digest", "minor", "patch", "pinDigest" ],
+			"groupName": "container images"
+		}
+	]
+}
