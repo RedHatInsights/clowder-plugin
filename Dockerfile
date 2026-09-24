@@ -1,4 +1,4 @@
-FROM registry.access.redhat.com/ubi9/ubi:9.8-1789348643 AS builder
+FROM registry.access.redhat.com/ubi9/ubi:9.8-1789646010 AS builder
 
 RUN yum -y module enable nodejs:20
 RUN dnf install npm patch -y
@@ -18,7 +18,7 @@ COPY src/ src/
 
 RUN yarn build
 
-FROM registry.access.redhat.com/ubi9/ubi-minimal:9.8-1789349365
+FROM registry.access.redhat.com/ubi9/ubi-minimal:9.8-1789639776
 
 ENV NGINX_CONFIGURATION_PATH=/etc/nginx/nginx.conf
 
@@ -29,7 +29,7 @@ COPY --from=builder /build/dist /opt/clowder-plugin
 COPY --from=builder /build/locales/ /opt/clowder-plugin/locales/
 
 RUN mkdir -p /var/log/nginx && \
-  chmod -R 777 /var/log/nginx
+	chmod -R 777 /var/log/nginx
 
 # Run script uses standard ways to run the application
 CMD nginx -g "daemon off;"
