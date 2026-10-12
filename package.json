@@ -7,38 +7,38 @@
     "build": "yarn pre-build & NODE_ENV=production webpack --config webpack.config.mjs",
     "build-dev": "yarn pre-build & webpack --config webpack.config.mjs",
     "http-server": "./http-server.sh ./dist",
-    "i18n": "i18next \"src/**/*.{js,jsx,ts,tsx}\" [-oc] -c i18next-parser.config.js"
+    "i18n": "i18next \"src/**/*.{js,jsx,ts,tsx}\""
   },
   "dependencies": {
-    "@openshift-console/dynamic-plugin-sdk": "4.20.0"
+    "@openshift-console/dynamic-plugin-sdk": "4.22.0"
   },
   "devDependencies": {
-    "@openshift-console/dynamic-plugin-sdk-webpack": "4.20.0",
-    "@patternfly/patternfly": "^6.0.0",
-    "@patternfly/react-core": "^6.0.0",
-    "@patternfly/react-table": "^6.0.0",
-    "@patternfly/react-tokens": "^6.0.0",
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
-    "@types/node": "^24.0.0",
-    "@types/react": "17.0.91",
+    "@openshift-console/dynamic-plugin-sdk-webpack": "4.22.0",
+    "@patternfly/patternfly": "^6.6.1",
+    "@patternfly/react-core": "^6.6.1",
+    "@patternfly/react-table": "^6.6.1",
+    "@patternfly/react-tokens": "^6.6.1",
+    "@types/node": "^24.19.2",
+    "@types/react": "18.3.31",
     "@types/react-router-dom": "5.3.3",
-    "@types/webpack": "^5.28.0",
-    "comment-json": "4.x",
-    "copy-webpack-plugin": "^13.0.0",
-    "css-loader": "7.1.x",
-    "file-loader": "6.x",
-    "http-server": "14.1.x",
-    "i18next-parser": "^9.0.0",
-    "mini-css-extract-plugin": "^2.7.2",
-    "read-pkg": "7.x",
-    "resolve-url-loader": "5.x",
-    "sass": "^1.57.1",
-    "sass-loader": "13.x",
-    "ts-loader": "9.5.4",
-    "typescript": "^5.7.2",
-    "webpack": "^5.75.0",
-    "webpack-cli": "^5.0.1"
+    "@types/webpack": "^5.28.5",
+    "comment-json": "^4.6.2",
+    "copy-webpack-plugin": "^13.0.1",
+    "css-loader": "^7.1.5",
+    "file-loader": "^6.2.0",
+    "http-server": "^14.1.1",
+    "i18next-parser": "^9.4.0",
+    "mini-css-extract-plugin": "^2.10.2",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "read-pkg": "^7.1.0",
+    "resolve-url-loader": "^5.0.0",
+    "sass": "^1.105.1",
+    "sass-loader": "^13.3.3",
+    "ts-loader": "9.6.2",
+    "typescript": "^5.9.3",
+    "webpack": "^5.111.1",
+    "webpack-cli": "^5.1.4"
   },
   "consolePlugin": {
     "name": "clowder-plugin",
@@ -54,5 +54,6 @@
     "dependencies": {
       "@console/pluginAPI": "*"
     }
-  }
+  },
+  "packageManager": "yarn@4.18.1"
 }
