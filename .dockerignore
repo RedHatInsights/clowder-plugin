@@ -1,0 +1,12 @@
+*
+!.yarn/releases
+!locales
+!src
+!.yarnrc.yml
+!console-extensions.json
+!nginx.conf
+!package.json
+!plugin.json
+!tsconfig.json
+!webpack.config.mjs
+!yarn.lock

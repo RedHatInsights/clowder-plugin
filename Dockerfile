@@ -1,35 +1,26 @@
-FROM registry.access.redhat.com/ubi9/ubi:9.8-1791765424 AS builder
+FROM registry.access.redhat.com/hi/nodejs:24.21.0-builder-1791559214 AS builder
 
-RUN yum -y module enable nodejs:20
-RUN dnf install npm patch -y
-RUN npm install yarn -g
+USER root
+RUN npm install -g corepack
 
-RUN mkdir /build
-WORKDIR /build
+WORKDIR /app
 
-COPY locales/ locales/
-COPY tsconfig.json webpack.config.mjs console-extensions.json package.json sdk.patch ./
+COPY package.json .
+COPY yarn.lock .
+COPY .yarnrc.yml .
+COPY .yarn .yarn
+RUN yarn install --immutable
 
-RUN yarn install
-
-#RUN patch node_modules/\@openshift-console/dynamic-plugin-sdk/lib/webpack/ConsoleAssetPlugin.js sdk.patch
-
-COPY src/ src/
+COPY . .
 
 RUN yarn build
 
-FROM registry.access.redhat.com/ubi9/ubi-minimal:9.8-1791765279
+USER ${DEFAULT_CONTAINER_USER}
 
-ENV NGINX_CONFIGURATION_PATH=/etc/nginx/nginx.conf
+FROM registry.access.redhat.com/hi/nginx:1.30.5-1791427742
 
-RUN microdnf update -y && microdnf module enable nginx:1.22 -y && microdnf install nginx -y
+ADD ./nginx.conf /etc/nginx/conf.d/default.conf
+COPY --from=builder /app/dist /usr/share/nginx/html
+COPY --from=builder /app/locales/ /usr/share/nginx/html/locales/
 
-ADD ./nginx.conf "${NGINX_CONFIGURATION_PATH}"
-COPY --from=builder /build/dist /opt/clowder-plugin
-COPY --from=builder /build/locales/ /opt/clowder-plugin/locales/
-
-RUN mkdir -p /var/log/nginx && \
-	chmod -R 777 /var/log/nginx
-
-# Run script uses standard ways to run the application
-CMD nginx -g "daemon off;"
+EXPOSE 9001
